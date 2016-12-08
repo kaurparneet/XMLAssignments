@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xs:annotation>
+  <xs:appinfo> Assignment2 Employee Schema</xs:appinfo>
+  <xs:documentation xml:lang="en">
+  This Schema defines an employee record.
+  </xs:documentation>
+</xs:annotation>
+	<xs:element name="employees" >
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="employee" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="expertise"  maxOccurs="1"/>
+							<xs:element name="consultedClient" maxOccurs="unbounded" >
+								<xs:complexType>		<!--Consulted client attributes-->
+									<xs:attribute name="name" type="xs:string" use="required"/>
+									<xs:attribute name="durationInMonths" type="xs:positiveInteger"/>
+									<xs:attribute name="position" use="required">
+										<xs:simpleType>		
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="manager"/>
+												<xs:enumeration value="teamLead"/>
+												<xs:enumeration value="programmer"/>
+												<xs:enumeration value="analyst"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>		<!--employee atributes-->
+						<xs:attribute name="name" type="xs:string" use="required"/>
+						<xs:attribute name="birthdate" type="xs:string" />
+						<xs:attribute name="sinNumber" type="xs:string" use="required"/>
+						<xs:attribute name="sex"  use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="male"></xs:enumeration>
+									<xs:enumeration value="female"></xs:enumeration>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
